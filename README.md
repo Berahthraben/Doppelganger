@@ -2,21 +2,19 @@
 ----
 ### CURRENT VERSION: BETA 1.0
 #### Created by Berahthraben
----
 
 WARNING: DISCORD HAS SPECIFIC TERMS STATING THAT SELF-BOTS ARE FORBIDDEN. ALTHOUGH THERE'S DEFENSIVE MEASURES IN THE PROGRAM I DO NOT TAKE RESPONSBILITY FOR BANS THAT MIGHT OCCUR IF YOU ABUSE THIS.
 
----
 ## Quick guide links
----
 
-How to use it: 
-How to enable developer mode:
-How to get your discord ID: 
+How to use it: https://github.com/Berahthraben/Doppelganger#how-to-use-it
+How to enable developer mode: https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization
+How to get your discord ID: https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization
+Tips: https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization
+License: https://github.com/Berahthraben/Doppelganger#license
 
 ![Doppel Main Window](https://i.imgur.com/WdIPCoj.png)
 # How to use it
----
 
 1. Download the project from this link and extract it anywhere: [[DOWNLOAD]](https://github.com/Berahthraben/Doppelganger/archive/refs/heads/master.zip)
 
@@ -58,7 +56,7 @@ How to get your discord ID:
 12. Enjoy!
 
 ## How to get your Discord Authorization
----
+
 1. Start by logging into Discord in your favorite browser (https://discordapp.com/)
 
 2. Press Ctrl + Shift + E to open the Network developer tab.
@@ -74,12 +72,12 @@ How to get your discord ID:
 5. There you go! Now include that code in the auth.txt file so the program works correctly!
 
 ## Some tips!
----
+
 - You can still add IDs to ```X_gen.txt``` files! Just place the ID in any new line and the program will process them automatically the next time you open up.
 - It's highly recommended to keep both the safety delay and save message ids checkboxes enabled. The first one to prevent being rate-limited and the second in case you misstyped something and wish to repost.
 - You can resend a message or do a completely different one without re-starting the program! However to change the target channels you'll need to restart with the appropriate file as parameter.
 - The program cannot be stopped unless forcibly closed after the "Send Message" button has been clicked. Make sure everything is correct before doing it and wait for it to finish to use the delete feature!
 
 ## LICENSE
----
+
 Code is literally open-source and fully UNtrademarked. Anyone with google and way too much time in their hands can do this shit. Literally just use this for whatever you want!
