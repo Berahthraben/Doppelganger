@@ -1,4 +1,7 @@
 # DOPPELGANGER - DISCORD SELF-POSTING BOT
+<p align="center">
+  <img width="460" height="300" src="https://i.imgur.com/WdIPCoj.png">
+</p>
 ----
 ### CURRENT VERSION: BETA 1.0
 #### Created by Berahthraben
@@ -17,7 +20,6 @@ WARNING: DISCORD HAS SPECIFIC TERMS STATING THAT SELF-BOTS ARE FORBIDDEN. ALTHOU
 
 [LICENSE](https://github.com/Berahthraben/Doppelganger#license)
 
-![Doppel Main Window](https://i.imgur.com/WdIPCoj.png)
 # How to use it
 
 1. Download the project from this link and extract it anywhere: [[DOWNLOAD]](https://github.com/Berahthraben/Doppelganger/archive/refs/heads/master.zip)
