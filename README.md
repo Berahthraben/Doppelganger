@@ -7,11 +7,11 @@ WARNING: DISCORD HAS SPECIFIC TERMS STATING THAT SELF-BOTS ARE FORBIDDEN. ALTHOU
 
 ## Quick guide links
 
-How to use it: https://github.com/Berahthraben/Doppelganger#how-to-use-it
-How to enable developer mode: https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization
-How to get your discord ID: https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization
-Tips: https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization
-License: https://github.com/Berahthraben/Doppelganger#license
+[HOW TO USE THIS](https://github.com/Berahthraben/Doppelganger#how-to-use-it)
+[HOW TO ENABLE DEVELOPER MODE](https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization)
+[HOW TO GET YOUR DISCORD AUTHENTICATION](https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization)
+[TIPS](https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization)
+[LICENSE](https://github.com/Berahthraben/Doppelganger#license)
 
 ![Doppel Main Window](https://i.imgur.com/WdIPCoj.png)
 # How to use it
