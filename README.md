@@ -1,6 +1,6 @@
 # DOPPELGANGER - DISCORD SELF-POSTING BOT
 <p align="center">
-  <img width="460" height="300" src="https://i.imgur.com/WdIPCoj.png">
+  <img src="https://i.imgur.com/WdIPCoj.png">
 </p>
 ----
 ### CURRENT VERSION: BETA 1.0
