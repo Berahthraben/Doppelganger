@@ -1,0 +1,251 @@
+#:import get_color_from_hex kivy.utils.get_color_from_hex
+#:import get_hex_from_color kivy.utils.get_color_from_hex
+#:import Gradient kivy_gradient.Gradient
+
+<HorSeparator@Widget>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 0.6
+        Rectangle:
+            texture: Gradient.horizontal(get_color_from_hex("00000000"), get_color_from_hex("FFFFFFFF"), get_color_from_hex("FFFFFFFF"), get_color_from_hex("FFFFFFFF"), get_color_from_hex("00000000"))
+            pos: self.pos
+            size: self.size
+<VerSeparator@Widget>:
+    canvas:
+        Color:
+            rgba: 1, 1, 1, 0.6
+        Rectangle:
+            texture: Gradient.vertical(get_color_from_hex("00000000"), get_color_from_hex("FFFFFFFF"), get_color_from_hex("FFFFFFFF"), get_color_from_hex("FFFFFFFF"), get_color_from_hex("00000000"))
+            pos: self.pos
+            size: self.size
+
+<HSeparator@HorSeparator>:
+    size_hint_y: None
+    height: dp(2)
+
+<VSeparator@VerSeparator>:
+    size_hint_x: None
+    width: dp(2)
+
+<MainUI>
+    orientation: "vertical"
+    padding: 20
+
+    canvas:
+        Color:
+            rgba: 0.1, 0.1, 0.1, 1
+            #rgba: 0.06, 0.13, 0.2, 1
+        Rectangle:
+#           texture: Gradient.vertical(get_color_from_hex("E2E2E2"), get_color_from_hex("1F2B3B"), get_color_from_hex("191919"))
+            #texture: Gradient.horizontal(get_color_from_hex("080c0f"), get_color_from_hex("11151a"), get_color_from_hex("080c0f"))
+            size: root.size
+    SettingsUI:
+        size_hint: 1, 1
+
+<DeleteMessagesPopup>
+    size_hint: 0.7, 0.2
+    title: "Please wait"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        Label:
+            halign: 'center'
+            valign: 'center'
+            size_hint_y: None
+            text_size: self.width, None
+            height: self.texture_size[1]
+            text: "Deleting previous messages, please wait..."
+        ProgressBar:
+            id: progress
+            max: 100
+
+<SendFilePopup>
+    size_hint: 0.7, 0.2
+    title: "Please wait"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        Label:
+            halign: 'center'
+            valign: 'center'
+            size_hint_y: None
+            text_size: self.width, None
+            height: self.texture_size[1]
+            text: "Sending the messages! Check the console for details"
+        ProgressBar:
+            id: progress
+            max: 100
+
+<LoadFilePopup>
+    size_hint: 0.7, 0.2
+    title: "Please wait"
+    BoxLayout:
+        orientation: "vertical"
+        padding: 10
+        Label:
+            halign: 'center'
+            valign: 'center'
+            size_hint_y: None
+            text_size: self.width, None
+            height: self.texture_size[1]
+            text: "Loading the file into the program and saving channels..."
+        ProgressBar:
+            id: progress
+            max: 100
+
+<DeleteConfirmationPopup>
+    size_hint: 0.7, 0.2
+    title: "Delete previous messages"
+    BoxLayout:
+        orientation: "vertical"
+        Label:
+            halign: 'center'
+            valign: 'center'
+            size_hint_y: None
+            text_size: self.width, None
+            height: self.texture_size[1]
+            text: "It seems there's previous messages to delete in this file. Would you like to delete them now?"
+        BoxLayout:
+            Button:
+                size_hint: 1, 0.5
+                id: popup_yes_btn
+                text: "Yes"
+            Button:
+                size_hint: 1, 0.5
+                id: popup_no_btn
+                text: "No"
+
+
+<Attachment>
+    spacing: 10
+    TextInput:
+        id: attachment
+        size_hint: 2, 1
+    Button:
+        size_hint: 0.5, 1
+        text: "Find"
+        on_release: root.show_load()
+
+<SettingsUI>
+#    cols: 1
+#    rows: 7
+#    rows_minimum: {0: 50, 1: 25, 2: 25, 3: 25, 4: 50, 5: 50, 6: 200}
+#    row_force_default: "True"
+#    row_default_height: 40
+    spacing: 10
+    orientation: "vertical"
+    id: setting_ui
+    Label:
+        size_hint: 1, 0.4
+        text: "DOPPELGANGER"
+        font_size: 64
+    HSeparator:
+    BoxLayout:
+        size_hint: 1, 0.1
+        font_size: 20
+        Label:
+            font_size: self.parent.font_size
+            text: "Include Attachments"
+        Label:
+            font_size: self.parent.font_size
+            text: "Safety Delay"
+        Label:
+            font_size: self.parent.font_size
+            text: "Save Message IDs"
+    BoxLayout:
+        size_hint: 1, 0.1
+        CheckBox:
+            id: attachments_chk
+            on_active: root.on_checkbox_active(*args)
+        CheckBox:
+            id: delay_chk
+            active: "True"
+        CheckBox:
+            id: save_ids_chk
+            active: "True"
+    HSeparator:
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "center"
+        size_hint: 1, 0.2
+        Label:
+            font_size: 30
+            text: "ATTACHMENTS"
+    BoxLayout:
+        id: attachments_layout
+        orientation: "vertical"
+        size_hint: 1, 0.15
+        spacing: 10
+        disabled: "True"
+        Attachment:
+#    BoxLayout:
+#        id: "attachments_layout"
+#        size_hint: 1, 0.15
+#        spacing: 10
+#        TextInput:
+#            size_hint: 2, 1
+#        Button:
+#            size_hint: 0.5, 1
+#            text: "Find"
+    AnchorLayout:
+        size_hint: 1, 0.15
+        anchor_y: "center"
+        Button:
+            id: add_widget_btn
+            on_release: root.adicionar_attachment()
+            size_hint: 0.5, 1
+            text: "+"
+            font_size: 30
+            disabled: "True"
+    BoxLayout:
+        size_hint: 1, 0.1
+        font_size: 20
+        Label:
+            font_size: self.parent.font_size
+            id: spoiler_lbl
+            disabled: "True"
+            text: "Spoiler Images"
+        Label:
+            font_size: self.parent.font_size
+            id: legacy_lbl
+            disabled: "True"
+            text: "Legacy Mode"
+    BoxLayout:
+        id: attachments_chk_layout
+        size_hint: 1, 0.1
+        CheckBox:
+            id: spoiler_chk
+            disabled: "True"
+        CheckBox:
+            id: legacy_chk
+            disabled: "True"
+    HSeparator:
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "center"
+        size_hint: 1, 0.2
+        Label:
+            font_size: 30
+            text: "MESSAGE"
+    AnchorLayout:
+        anchor_x: "center"
+        anchor_y: "center"
+        size_hint: 1, 1
+        TextInput:
+            id: message_txt
+            text: ""
+    AnchorLayout:
+        size_hint: 1, 0.25
+        Button:
+            id: send_btn
+            font_size: 40
+            size_hint: 1, 1
+            text: "Send Messages!"
+            on_release: root.check_deletion()
+    AnchorLayout:
+        size_hint: 1, 0.1
+        Label:
+            halign: "center"
+            valign: "center"
+            text: ""
+            id: loaded_file_lbl
