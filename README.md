@@ -8,9 +8,13 @@ WARNING: DISCORD HAS SPECIFIC TERMS STATING THAT SELF-BOTS ARE FORBIDDEN. ALTHOU
 ## Quick guide links
 
 [HOW TO USE THIS](https://github.com/Berahthraben/Doppelganger#how-to-use-it)
+
 [HOW TO ENABLE DEVELOPER MODE](https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization)
+
 [HOW TO GET YOUR DISCORD AUTHENTICATION](https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization)
+
 [TIPS](https://github.com/Berahthraben/Doppelganger#how-to-get-your-discord-authorization)
+
 [LICENSE](https://github.com/Berahthraben/Doppelganger#license)
 
 ![Doppel Main Window](https://i.imgur.com/WdIPCoj.png)
