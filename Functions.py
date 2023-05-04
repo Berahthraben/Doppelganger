@@ -56,8 +56,8 @@ class Controller:
     
     # Main sending function, very important
     def send_message(self, attachment_paths, message, delay, spoiler, legacy, save_msg_ids):
-        print(legacy)
         self.previous_delete = save_msg_ids
+        print("[SENDING MESSAGE TO SERVERS]")
         if attachment_paths:
             ret = self.send_message_attachments(
                 attachment_paths,
@@ -113,30 +113,36 @@ class Controller:
             "Authorization": self.auth
             }
         x = requests.post(url, headers=headers, data=data, files=f)
-        resp = json.loads(x.text)
-        if "channel_id" in resp.keys():
-            print("Sent successfully to channel \"{}\" in the server \"{}\"!".format(
-                channel["channel_name"], channel["guild_name"]
-                ))
-            for attach in resp["attachments"]:
-                if spoiler:
+        resp = ""
+        try:
+            resp = json.loads(x.text)
+            if "channel_id" in resp.keys():
+                print("Sent successfully to channel \"{}\" in the server \"{}\"!".format(
+                    channel["channel_name"], channel["guild_name"]
+                    ))
+                for attach in resp["attachments"]:
+                    if spoiler:
 
-                    # Weird note: Apparently the only way for an embed to appear in a spoilered
-                    # link is if there's a space between the pipes and the link
-                    # Also I wasted about 2 hours trying to figure out a way to circunvent
-                    # this and all I had to do was add two spaces. Pain.
-                    # Thank you reddit user ShesJustAGlitch for the solution.
-                    # Stackoverflow is overrated
+                        # Weird note: Apparently the only way for an embed to appear in a spoilered
+                        # link is if there's a space between the pipes and the link
+                        # Also I wasted about 2 hours trying to figure out a way to circunvent
+                        # this and all I had to do was add two spaces. Pain.
+                        # Thank you reddit user ShesJustAGlitch for the solution.
+                        # Stackoverflow is overrated
 
-                    ret.append("|| {} ||".format(attach["url"]))
-                else:
-                    ret.append(attach["url"])
-            if save_msg_ids:
-                channel["last_message"] = resp["id"]
-            return ret
-        else:
-            print(x.text)
-            return ""
+                        ret.append("|| {} ||".format(attach["url"]))
+                    else:
+                        ret.append(attach["url"])
+                if save_msg_ids:
+                    channel["last_message"] = resp["id"]
+                return ret
+            else:
+                print(x.text)
+                return ""
+        except ValueError:
+            print("Something went wrong when decoding the response, skipping debug print")
+        return ""
+        
 
     def send_message_text_only(self, message, channel, save_msg_ids):
         url = "https://discordapp.com/api/v9/channels/" + channel["channel_id"] + "/messages"
@@ -144,17 +150,18 @@ class Controller:
         headers = {"authorization": self.auth, "content-type": "application/x-www-form-urlencoded"}
 
         x = requests.post(url, headers=headers, data={"content": message, "tts": False})
-
-        resp = json.loads(x.text)
-        if "channel_id" in resp.keys():
-            print("Sent successfully to channel \"{}\" in the server \"{}\"!".format(
-                channel["channel_name"], channel["guild_name"]
-                ))
-            if save_msg_ids:
-                channel["last_message"] = resp["id"]
-        else:
-            print(x.text)
-    
+        try:
+            resp = json.loads(x.text)
+            if "channel_id" in resp.keys():
+                print("Sent successfully to channel \"{}\" in the server \"{}\"!".format(
+                    channel["channel_name"], channel["guild_name"]
+                    ))
+                if save_msg_ids:
+                    channel["last_message"] = resp["id"]
+            else:
+                print(x.text)
+        except ValueError:
+            print("Something went wrong when decoding the response, skipping debug print")
     # Saves the {FILE}_gen version of input
     def save_file(self):
         if not self.file_path.endswith("_gen.txt"):
@@ -181,6 +188,7 @@ class Controller:
     def delete_message_all(self):
         self.load_percentage = 0
         increase = 100 / len(self.channels)
+        print("[DELETING PREVIOUS MESSAGES]")
         for i in self.channels:
             time.sleep(1)  # Safety delay to avoid getting rate limited
             if i["last_message"] != "":
@@ -191,14 +199,16 @@ class Controller:
 
     # delete_message(discord_auth_code, message_id_to_be_deleted) -> None
     def delete_message_one(self, message_id, channel_id):
-        print(message_id)
         url = "https://discord.com/api/v9/channels/{}/messages/{}".format(channel_id, message_id)
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:100.0) Gecko/20100101 Firefox/100.0",
             "Authorization": self.auth
             }
         x = requests.delete(url, headers=headers)
-        print(x.text)
+        if not x.text:
+            print("Successfully deleted message " + message_id)
+        else:
+            print(x.text)
     
     # INTERNALS
     

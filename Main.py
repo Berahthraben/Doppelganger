@@ -1,3 +1,12 @@
+import os
+os.environ["KIVY_NO_CONSOLELOG"] = "1"
+
+import kivy
+from kivy.config import Config
+
+Config.set('kivy', 'log_level', 'error')
+Config.write()
+
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.config import Config
@@ -5,6 +14,7 @@ from kivy.core.window import Window
 from kivy.clock import Clock
 from kivy.lang.builder import Builder
 from kivy.uix.popup import Popup
+
 from functools import partial
 from Functions import Controller
 import tkinter as tk
@@ -30,7 +40,7 @@ class DeleteMessagesPopup(Popup):
         else:
             self.dismiss()
             Clock.unschedule(current_event)
-            print(Clock.get_events())
+            #print(Clock.get_events())
             settingui.send_message_btn_func()
 
 
